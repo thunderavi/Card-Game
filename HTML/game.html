@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Temple Cards - Ancient Quiz</title>
-    <link rel="stylesheet" href="../STYLE/game.css">
+   <link rel="stylesheet" href="../STYLE/game.css">
 </head>
 <body>
     <div class="temple-interior"></div>
@@ -27,10 +27,29 @@
                 <div class="info-label">Level</div>
                 <div class="info-value" id="level">1</div>
             </div>
+            <div class="info-item">
+                <div class="info-label">Lives</div>
+                <div class="info-value" id="lives">❤️❤️❤️</div>
+            </div>
+        </div>
+
+        <div class="streak-info">
+            <div class="streak-item">
+                🔥 Streak: <span id="streak">0</span>
+            </div>
+            <div class="streak-item">
+                💎 Multiplier: <span id="multiplier">1x</span>
+            </div>
         </div>
         
         <div class="timer">
             <div class="timer-display" id="timer">⏰ 00:00</div>
+        </div>
+
+        <div class="power-ups">
+            <button class="power-up-btn" id="hintBtn" onclick="useHint()">💡 Hint (3)</button>
+            <button class="power-up-btn" id="skipBtn" onclick="skipQuestion()">⏭️ Skip (2)</button>
+            <button class="power-up-btn" id="freezeBtn" onclick="freezeTime()">❄️ Freeze (1)</button>
         </div>
     </div>
 
@@ -42,9 +61,13 @@
         <div class="game-complete" id="gameComplete">
             <h2>🎉 Temple Conquered! 🎉</h2>
             <div class="final-score" id="finalScore">0</div>
+            <div id="finalStats"></div>
             <p>You have proven worthy of the ancient wisdom!</p>
             <button class="play-again-btn" onclick="restartGame()">
                 🔄 Enter Another Temple 🔄
+            </button>
+            <button class="admin-btn" onclick="openAdmin()">
+                ⚙️ Admin Panel ⚙️
             </button>
         </div>
     </div>
@@ -61,6 +84,7 @@
     <!-- Feedback -->
     <div class="feedback" id="feedback"></div>
 
-   <script src="../SCRIPT/game.js"></script>
+    <script src="../SCRIPT/game.js"></script>
+       
 </body>
 </html>
