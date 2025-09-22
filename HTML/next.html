@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Temple Cards - Enter Your Name</title>
+   <link rel="stylesheet" href="../STYLE/next.css">
+</head>
+<body>
+    <div class="temple-interior"></div>
+    <div class="torch-glow torch-left"></div>
+    <div class="torch-glow torch-right"></div>
+    <div class="gems" id="gems"></div>
+    
+    <div class="main-container">
+        <h1 class="temple-title">WELCOME EXPLORER</h1>
+        <p class="subtitle">~ Enter the Ancient Temple ~</p>
+        
+        <div class="form-container">
+            <label for="playerName" class="form-label">
+                What shall the temple guardians call you?
+            </label>
+            
+            <input 
+                type="text" 
+                id="playerName" 
+                class="name-input" 
+                placeholder="Enter your adventurer name..."
+                maxlength="20"
+                autocomplete="off"
+            >
+            
+            <div id="errorMessage" class="error-message">
+                Please enter your name to continue your quest!
+            </div>
+        </div>
+        
+        <button id="startButton" class="start-button" onclick="startGame()">
+            🏛️ BEGIN ADVENTURE 🏛️
+        </button>
+    </div>
+
+    <script src="../SCRIPT/next.js"></script>
+</body>
+</html>

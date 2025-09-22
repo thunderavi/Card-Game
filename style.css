@@ -1,0 +1,330 @@
+   @import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Creepster&display=swap');
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Cinzel', serif;
+            background: 
+                radial-gradient(ellipse at center, rgba(0,0,0,0.2) 0%, rgba(0,0,0,0.6) 100%),
+                linear-gradient(135deg, #1a4a2e 0%, #2d6b3e 25%, #4a7c3a 50%, #1a4a2e 75%, #0f2a1a 100%);
+            background-size: 100% 100%, 200% 200%;
+            animation: jungleSway 15s ease-in-out infinite;
+            min-height: 100vh;
+            overflow-x: hidden;
+            color: #d4b896;
+            position: relative;
+        }
+
+        @keyframes jungleSway {
+            0%, 100% { background-position: 0% 0%, 0% 50%; }
+            50% { background-position: 0% 0%, 100% 50%; }
+        }
+
+        .jungle-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: 
+                radial-gradient(circle at 20% 80%, rgba(46, 125, 50, 0.3) 0%, transparent 50%),
+                radial-gradient(circle at 80% 20%, rgba(27, 94, 32, 0.3) 0%, transparent 50%),
+                radial-gradient(circle at 40% 40%, rgba(56, 142, 60, 0.2) 0%, transparent 50%);
+            pointer-events: none;
+            z-index: 1;
+        }
+
+        .leaves {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 2;
+        }
+
+        .leaf {
+            position: absolute;
+            font-size: 2rem;
+            color: rgba(76, 175, 80, 0.6);
+            animation: leafFall 8s linear infinite;
+        }
+
+        @keyframes leafFall {
+            0% {
+                transform: translateY(-100px) rotate(0deg);
+                opacity: 0;
+            }
+            10% {
+                opacity: 1;
+            }
+            90% {
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(100vh) rotate(360deg);
+                opacity: 0;
+            }
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+            position: relative;
+            z-index: 10;
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 60px;
+            animation: templeRise 2s ease-out;
+        }
+
+        @keyframes templeRise {
+            from {
+                opacity: 0;
+                transform: translateY(50px) scale(0.8);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0) scale(1);
+            }
+        }
+
+        .logo {
+            font-family: 'Creepster', cursive;
+            font-size: clamp(2.5rem, 6vw, 5rem);
+            color: #8d6e63;
+            text-shadow: 
+                3px 3px 0px #5d4e37,
+                6px 6px 10px rgba(0,0,0,0.8),
+                0 0 20px rgba(255, 193, 7, 0.3);
+            margin-bottom: 20px;
+            animation: stoneGlow 3s ease-in-out infinite alternate;
+            background: linear-gradient(45deg, #a1887f, #8d6e63, #6d4c41);
+            background-clip: text;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            filter: drop-shadow(3px 3px 0px #5d4e37) drop-shadow(6px 6px 10px rgba(0,0,0,0.8));
+        }
+
+        @keyframes stoneGlow {
+            from {
+                filter: drop-shadow(3px 3px 0px #5d4e37) drop-shadow(6px 6px 10px rgba(0,0,0,0.8)) drop-shadow(0 0 20px rgba(255, 193, 7, 0.2));
+            }
+            to {
+                filter: drop-shadow(3px 3px 0px #5d4e37) drop-shadow(6px 6px 10px rgba(0,0,0,0.8)) drop-shadow(0 0 30px rgba(255, 193, 7, 0.5));
+            }
+        }
+
+        .subtitle {
+            font-size: clamp(0.8rem, 2.5vw, 1.2rem);
+            color: #ffc107;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.8);
+            margin-bottom: 40px;
+            font-weight: 600;
+            letter-spacing: 3px;
+        }
+
+        .game-area {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 400px;
+            margin: 40px 0;
+            perspective: 1000px;
+        }
+
+        .treasure-card {
+            width: 220px;
+            height: 300px;
+            background: 
+                linear-gradient(135deg, rgba(141, 110, 99, 0.9) 0%, rgba(109, 76, 65, 0.9) 100%),
+                url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="stone" patternUnits="userSpaceOnUse" width="20" height="20"><rect width="20" height="20" fill="%23a1887f"/><circle cx="10" cy="10" r="3" fill="%23bcaaa4"/><circle cx="5" cy="15" r="2" fill="%23d7ccc8"/></pattern></defs><rect width="100" height="100" fill="url(%23stone)"/></svg>');
+            border-radius: 15px;
+            border: 4px solid #8bc34a;
+            box-shadow: 
+                0 0 20px rgba(139, 195, 74, 0.4),
+                inset 0 0 30px rgba(255, 235, 59, 0.1),
+                0 15px 35px rgba(0,0,0,0.4);
+            cursor: pointer;
+            transition: all 0.4s ease;
+            position: relative;
+            overflow: hidden;
+            animation: treasureFloat 4s ease-in-out infinite;
+            transform-style: preserve-3d;
+        }
+
+        @keyframes treasureFloat {
+            0%, 100% { 
+                transform: translateY(0px) rotateX(0deg) rotateY(0deg); 
+                box-shadow: 
+                    0 0 20px rgba(139, 195, 74, 0.4),
+                    inset 0 0 30px rgba(255, 235, 59, 0.1),
+                    0 15px 35px rgba(0,0,0,0.4);
+            }
+            50% { 
+                transform: translateY(-15px) rotateX(5deg) rotateY(5deg); 
+                box-shadow: 
+                    0 0 30px rgba(139, 195, 74, 0.6),
+                    inset 0 0 40px rgba(255, 235, 59, 0.2),
+                    0 25px 45px rgba(0,0,0,0.3);
+            }
+        }
+
+        .treasure-card:hover {
+            transform: scale(1.05) rotateX(10deg) rotateY(10deg) translateY(-10px);
+            box-shadow: 
+                0 0 40px rgba(139, 195, 74, 0.8),
+                0 0 60px rgba(255, 193, 7, 0.4),
+                inset 0 0 50px rgba(255, 235, 59, 0.3),
+                0 30px 60px rgba(0,0,0,0.4);
+            border-color: #ffc107;
+        }
+
+        .treasure-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 235, 59, 0.4), transparent);
+            animation: goldShimmer 3s ease-in-out infinite;
+            z-index: 1;
+        }
+
+        @keyframes goldShimmer {
+            0% { left: -100%; }
+            50% { left: 100%; }
+            100% { left: 100%; }
+        }
+
+        .card-content {
+            position: relative;
+            z-index: 2;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 30px;
+            text-align: center;
+        }
+
+        .card-icon {
+            font-size: 4rem;
+            margin-bottom: 25px;
+            animation: gemPulse 2s ease-in-out infinite;
+            filter: drop-shadow(0 0 10px rgba(255, 193, 7, 0.8));
+        }
+
+        @keyframes gemPulse {
+            0%, 100% { 
+                transform: scale(1);
+                filter: drop-shadow(0 0 10px rgba(255, 193, 7, 0.8));
+            }
+            50% { 
+                transform: scale(1.1);
+                filter: drop-shadow(0 0 20px rgba(255, 193, 7, 1));
+            }
+        }
+
+        .card-text {
+            font-size: 0.9rem;
+            color: #fff;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.8);
+            font-weight: 600;
+            letter-spacing: 2px;
+            background: linear-gradient(45deg, #ffc107, #ff8f00);
+            background-clip: text;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            filter: drop-shadow(2px 2px 4px rgba(0,0,0,0.8));
+        }
+
+        .instructions {
+            text-align: center;
+            margin-top: 50px;
+            animation: mysticalFade 3s ease-in 1.5s both;
+        }
+
+        @keyframes mysticalFade {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .instructions p {
+            font-size: clamp(0.6rem, 2vw, 0.9rem);
+            color: #8bc34a;
+            text-shadow: 0 0 10px rgba(139, 195, 74, 0.6);
+            margin-bottom: 15px;
+            animation: jungleGlow 3s ease-in-out infinite alternate;
+            font-weight: 600;
+        }
+
+        @keyframes jungleGlow {
+            from {
+                text-shadow: 0 0 10px rgba(139, 195, 74, 0.6);
+            }
+            to {
+                text-shadow: 0 0 20px rgba(139, 195, 74, 0.8), 0 0 30px rgba(255, 235, 59, 0.4);
+            }
+        }
+
+        .vines {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 3;
+        }
+
+        .vine {
+            position: absolute;
+            font-size: 3rem;
+            color: rgba(76, 175, 80, 0.3);
+            animation: vineGrow 8s ease-in-out infinite;
+        }
+
+        @keyframes vineGrow {
+            0%, 100% { transform: scale(0.8) rotate(-5deg); opacity: 0.3; }
+            50% { transform: scale(1.1) rotate(5deg); opacity: 0.6; }
+        }
+
+        .footer {
+            text-align: center;
+            margin-top: 80px;
+            font-size: 0.5rem;
+            color: #795548;
+            animation: mysticalFade 4s ease-in 3s both;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.8);
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 15px;
+            }
+            
+            .treasure-card {
+                width: 180px;
+                height: 240px;
+            }
+            
+            .card-icon {
+                font-size: 3rem;
+            }
+            
+            .card-content {
+                padding: 20px;
+            }
+        }
+    

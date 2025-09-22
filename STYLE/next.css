@@ -1,0 +1,283 @@
+ <style>
+        @import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Creepster&display=swap');
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Cinzel', serif;
+            background: 
+                radial-gradient(ellipse at center, rgba(0,0,0,0.3) 0%, rgba(0,0,0,0.7) 100%),
+                linear-gradient(135deg, #1a4a2e 0%, #2d6b3e 25%, #4a7c3a 50%, #1a4a2e 75%, #0f2a1a 100%);
+            background-size: 100% 100%, 200% 200%;
+            animation: templeAmbience 12s ease-in-out infinite;
+            min-height: 100vh;
+            overflow-x: hidden;
+            color: #d4b896;
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        @keyframes templeAmbience {
+            0%, 100% { background-position: 0% 0%, 0% 50%; }
+            50% { background-position: 0% 0%, 100% 50%; }
+        }
+
+        .temple-interior {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: 
+                radial-gradient(circle at 30% 70%, rgba(255, 193, 7, 0.1) 0%, transparent 60%),
+                radial-gradient(circle at 70% 30%, rgba(139, 195, 74, 0.15) 0%, transparent 60%);
+            pointer-events: none;
+            z-index: 1;
+        }
+
+        .torch-glow {
+            position: fixed;
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            background: radial-gradient(circle, rgba(255, 193, 7, 0.3) 0%, transparent 70%);
+            animation: torchFlicker 2s ease-in-out infinite alternate;
+            pointer-events: none;
+            z-index: 2;
+        }
+
+        .torch-left {
+            top: 20%;
+            left: 10%;
+            animation-delay: 0s;
+        }
+
+        .torch-right {
+            top: 20%;
+            right: 10%;
+            animation-delay: 1s;
+        }
+
+        @keyframes torchFlicker {
+            0% { 
+                transform: scale(1);
+                opacity: 0.6;
+            }
+            100% { 
+                transform: scale(1.2);
+                opacity: 0.9;
+            }
+        }
+
+        .main-container {
+            position: relative;
+            z-index: 10;
+            max-width: 600px;
+            width: 90%;
+            background: 
+                linear-gradient(135deg, rgba(141, 110, 99, 0.9) 0%, rgba(109, 76, 65, 0.9) 100%),
+                url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="stone" patternUnits="userSpaceOnUse" width="15" height="15"><rect width="15" height="15" fill="%23a1887f"/><circle cx="7" cy="7" r="2" fill="%23bcaaa4"/><circle cx="3" cy="12" r="1" fill="%23d7ccc8"/></pattern></defs><rect width="100" height="100" fill="url(%23stone)"/></svg>');
+            border: 5px solid #8bc34a;
+            border-radius: 20px;
+            padding: 50px 40px;
+            box-shadow: 
+                0 0 30px rgba(139, 195, 74, 0.4),
+                inset 0 0 50px rgba(255, 235, 59, 0.1),
+                0 20px 60px rgba(0, 0, 0, 0.6);
+            text-align: center;
+            animation: templeRise 1.5s ease-out;
+        }
+
+        @keyframes templeRise {
+            from {
+                opacity: 0;
+                transform: translateY(100px) scale(0.8);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0) scale(1);
+            }
+        }
+
+        .temple-title {
+            font-family: 'Creepster', cursive;
+            font-size: clamp(1.8rem, 4vw, 2.8rem);
+            color: #8d6e63;
+            text-shadow: 
+                2px 2px 0px #5d4e37,
+                4px 4px 8px rgba(0,0,0,0.8);
+            margin-bottom: 15px;
+            background: linear-gradient(45deg, #a1887f, #8d6e63, #6d4c41);
+            background-clip: text;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            filter: drop-shadow(2px 2px 0px #5d4e37) drop-shadow(4px 4px 8px rgba(0,0,0,0.8));
+        }
+
+        .subtitle {
+            font-size: clamp(0.7rem, 2vw, 1rem);
+            color: #ffc107;
+            text-shadow: 1px 1px 3px rgba(0,0,0,0.8);
+            margin-bottom: 40px;
+            font-weight: 600;
+            letter-spacing: 2px;
+        }
+
+        .form-container {
+            margin: 30px 0;
+        }
+
+        .form-label {
+            display: block;
+            font-size: clamp(0.9rem, 2.5vw, 1.1rem);
+            color: #fff;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.8);
+            margin-bottom: 20px;
+            font-weight: 600;
+            letter-spacing: 1px;
+        }
+
+        .name-input {
+            width: 100%;
+            max-width: 300px;
+            padding: 15px 20px;
+            font-size: 1.1rem;
+            font-family: 'Cinzel', serif;
+            font-weight: 600;
+            border: 3px solid #8bc34a;
+            border-radius: 10px;
+            background: 
+                linear-gradient(135deg, rgba(255, 255, 255, 0.9) 0%, rgba(240, 240, 240, 0.9) 100%);
+            color: #4a4a4a;
+            text-align: center;
+            box-shadow: 
+                0 0 15px rgba(139, 195, 74, 0.3),
+                inset 0 2px 5px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+            outline: none;
+        }
+
+        .name-input:focus {
+            border-color: #ffc107;
+            box-shadow: 
+                0 0 25px rgba(255, 193, 7, 0.6),
+                inset 0 2px 5px rgba(0,0,0,0.1);
+            transform: scale(1.02);
+        }
+
+        .name-input::placeholder {
+            color: #888;
+            font-style: italic;
+        }
+
+        .start-button {
+            margin-top: 40px;
+            padding: 18px 35px;
+            font-size: clamp(1rem, 2.5vw, 1.2rem);
+            font-family: 'Cinzel', serif;
+            font-weight: 700;
+            letter-spacing: 2px;
+            background: 
+                linear-gradient(135deg, #ffc107 0%, #ff8f00 50%, #e65100 100%);
+            color: #fff;
+            border: 3px solid #8bc34a;
+            border-radius: 12px;
+            cursor: pointer;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.8);
+            box-shadow: 
+                0 0 20px rgba(255, 193, 7, 0.4),
+                0 6px 20px rgba(0,0,0,0.3);
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .start-button::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.4), transparent);
+            transition: left 0.5s ease;
+        }
+
+        .start-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 
+                0 0 30px rgba(255, 193, 7, 0.7),
+                0 8px 25px rgba(0,0,0,0.4);
+            border-color: #ffc107;
+        }
+
+        .start-button:hover::before {
+            left: 100%;
+        }
+
+        .start-button:active {
+            transform: translateY(-1px);
+        }
+
+        .start-button:disabled {
+            opacity: 0.6;
+            cursor: not-allowed;
+            transform: none;
+        }
+
+        .gems {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 3;
+        }
+
+        .gem {
+            position: absolute;
+            font-size: 1.5rem;
+            animation: gemSparkle 4s ease-in-out infinite;
+        }
+
+        @keyframes gemSparkle {
+            0%, 100% { 
+                opacity: 0.3; 
+                transform: scale(0.8); 
+            }
+            50% { 
+                opacity: 0.8; 
+                transform: scale(1.2); 
+            }
+        }
+
+        .error-message {
+            color: #ff6b6b;
+            font-size: 0.9rem;
+            margin-top: 10px;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.8);
+            display: none;
+        }
+
+        @media (max-width: 768px) {
+            .main-container {
+                padding: 30px 25px;
+            }
+            
+            .name-input {
+                padding: 12px 15px;
+                font-size: 1rem;
+            }
+            
+            .start-button {
+                padding: 15px 25px;
+            }
+        }
+    </style>
